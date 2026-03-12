@@ -53,7 +53,7 @@ if st.button("تسجيل"):
         st.error("الرجاء إدخال الاسم")
 
     elif len(words) < 4:
-        st.error("يجب إدخال الاسم الرباعي (4 كلمات على الأقل)")
+        st.error("الأسم الرباعي غير صحيح")
         
     elif len(id.strip()) != 10 or not id.strip().isdigit():
         st.error("رقم الهوية/الإقامة يجب أن يتكون من 10 أرقام فقط")
@@ -85,6 +85,7 @@ if st.button("تسجيل"):
     
 
     
+
 
 
 
