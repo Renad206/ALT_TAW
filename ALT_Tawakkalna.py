@@ -6,7 +6,12 @@ name = st.text_input("الاسم الرباعي")
 
 id = st.text_input("رقم الهوية/الاقامة", max_chars=10, help="أدخل 10 أرقام")
 
-birth = st.data_input("تاريخ الميلاد")
+birth = st.date_input(
+    "تاريخ الميلاد",
+    value=datetime.date(2000, 1, 1),
+    min_value=datetime.date(1920, 1, 1),
+    max_value=datetime.date.today()
+)
 
 
 phone = st.text_input("رقم الجوال", placeholder="05XXXXXXXX", max_chars=10)
@@ -75,3 +80,4 @@ if st.button("تسجيل"):
     
 
     
+
