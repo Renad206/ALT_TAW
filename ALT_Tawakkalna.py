@@ -1,5 +1,7 @@
 import streamlit as st 
 
+import datetime
+
 st.title ("منصة تسجيل بيانات المستخدمين")
 
 name = st.text_input("الاسم الرباعي")
@@ -80,4 +82,5 @@ if st.button("تسجيل"):
     
 
     
+
 
