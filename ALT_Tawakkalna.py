@@ -46,18 +46,16 @@ lang = st.multiselect(
 ["العربية" , "الإنجليزية" , "الصينية" , "الهندية" , "الإسبانية" , "الفرنسية" , "الألمانية" , "الروسية" , "اليابانية" , "البرتغالية" ]
 )
 
-words = name.strip().split() 
-
-    if name == "":
-    st.error("الرجاء إدخال الاسم")
+if st.button("تسجيل"):
+    words = name.strip().split() 
+    
+    if name.strip() == "":
+        st.error("الرجاء إدخال الاسم")
 
     elif len(words) < 4:
-    st.error("يجب إدخال الاسم الرباعي (4 كلمات على الأقل)")
-    
-    if name == "":
-        st.error("الأسم الرباعي غير صحيح")
+        st.error("يجب إدخال الاسم الرباعي (4 كلمات على الأقل)")
         
-    elif len(id) != 10 or not id.isdigit():
+    elif len(id.strip()) != 10 or not id.strip().isdigit():
         st.error("رقم الهوية/الإقامة يجب أن يتكون من 10 أرقام فقط")
         
     elif phone == "" or len(phone) != 10 or not phone.startswith("05"):
@@ -87,6 +85,7 @@ words = name.strip().split()
     
 
     
+
 
 
 
