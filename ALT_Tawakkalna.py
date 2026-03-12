@@ -6,7 +6,18 @@ name = st.text_input("الاسم الرباعي")
 
 id = st.text_input("رقم الهوية/الاقامة", max_chars=10, help="أدخل 10 أرقام")
 
+birth = st.data_input("تاريخ الميلاد")
+
+
 phone = st.text_input("رقم الجوال", placeholder="05XXXXXXXX", max_chars=10)
+
+email = st.text_input("البريد الالكتروني")
+
+uni = st.selectbox(
+"الجامعة"
+,
+["جامعة الملك فيصل" , "" , "" , "" ]
+)
 
 degree = st.selectbox(
 "الدرجة العلمية"
@@ -22,16 +33,45 @@ skills = st.multiselect(
 ["العمل الجماعي" , "اللغة الانجليزية" , "التسويق" , "ادارة المشاريع" , "تحليل البيانات" , "البرمجة" , "كتابة تقارير"]
 )
 
-if st.button("تسجيل"):
-    st.success("تم التسجيل بنجاح")
+lang = st.multiselect(
+"اللغات"
+,
+["العربية" , "" , "" , "" , "" , "" ]
+)
 
-    st.write("البيانات المدخلة:")
-    st.write("الاسم:" , name)
-    st.write("رقم الهوية:" , id)
-    st.write("رقم الجوال:" , phone)
-    st.write("المؤهل:" , degree)
-    st.write("سنوات الخبرة:" ,exp)
-    st.write("المهارات:" , skills)
+if st.button("تسجيل"):
+    if ( 
+        name == "" or 
+        id == "" or 
+        birth == "" or
+        phone == "" or 
+        email == "" or
+        uni == "" or
+        degree == "اختر المؤهل"
+    ):
+        st.error("يجب تعبئة جميع البيانات") 
+    elif len(phone) != 10 or not phone.startswith("05"):
+        st.error("رقم الجوال غير صحيح")
+        
+    elif "@" not in email:
+        st.error("البريد الالكتروني غير صحيح")
+    
+    elif len (skills) < 3:
+        st.error("يجب اختيار 3 مهارات على الاقل")
+
+    else:
+        
+            
+        st.success("تم التسجيل بنجاح")
+    
+        st.write("البيانات المدخلة:")
+        st.write("الاسم:" , name)
+        st.write("رقم الهوية:" , id)
+        st.write("رقم الجوال:" , phone)
+        st.write("المؤهل:" , degree)
+        st.write("سنوات الخبرة:" ,exp)
+        st.write("المهارات:" , skills)
 
     
+
     
