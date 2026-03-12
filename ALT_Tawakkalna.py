@@ -59,7 +59,7 @@ if st.button("تسجيل"):
     elif phone == "" or len(phone) != 10 or not phone.startswith("05"):
         st.error("رقم الجوال غير صحيح، يجب أن يبدأ بـ 05 ويتكون من 10 أرقام")
         
-    elif "@" not in email:
+    elif "@" not in email or "." not in email:
         st.error("البريد الالكتروني غير صحيح")
     
     elif len(skills) < 3:
@@ -83,6 +83,7 @@ if st.button("تسجيل"):
     
 
     
+
 
 
 
