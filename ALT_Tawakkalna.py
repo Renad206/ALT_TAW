@@ -47,41 +47,43 @@ lang = st.multiselect(
 )
 
 if st.button("تسجيل"):
-    if ( 
-        name == "" or 
-        id == "" or 
-        birth == "" or
-        phone == "" or 
-        email == "" or
-        uni == "" or
-        degree == "اختر المؤهل"
-    ):
-        st.error("يجب تعبئة جميع البيانات") 
-    elif len(phone) != 10 or not phone.startswith("05"):
-        st.error("رقم الجوال غير صحيح")
+    name = name.strip()
+    id = id.strip()
+    
+    if name == "":
+        st.error("الأسم الرباعي غير صحيح")
+        
+    elif len(id) != 10 or not id.isdigit():
+        st.error("رقم الهوية/الإقامة يجب أن يتكون من 10 أرقام فقط")
+        
+    elif phone == "" or len(phone) != 10 or not phone.startswith("05"):
+        st.error("رقم الجوال غير صحيح، يجب أن يبدأ بـ 05 ويتكون من 10 أرقام")
         
     elif "@" not in email:
         st.error("البريد الالكتروني غير صحيح")
     
-    elif len (skills) < 3:
-        st.error("يجب اختيار 3 مهارات على الاقل")
+    elif len(skills) < 3:
+        st.error("يجب اختيار 3 مهارات على الأقل")
 
     else:
-        
-            
         st.success("تم التسجيل بنجاح")
+        st.balloons() 
+        
+        st.markdown("---")
+        st.subheader("البيانات المسجلة:")
+        col1, col2 = st.columns(2)
+        with col1:
+            st.write(f"**الاسم:** {name}")
+            st.write(f"**رقم الهوية:** {id}")
+            st.write(f"**رقم الجوال:** {phone}")
+        with col2:
+            st.write(f"**المؤهل:** {degree}")
+            st.write(f"**الخبرة:** {exp} سنوات")
+            st.write(f"**المهارات:** {', '.join(skills)}")
     
-        st.write("البيانات المدخلة:")
-        st.write("الاسم:" , name)
-        st.write("رقم الهوية:" , id)
-        st.write("رقم الجوال:" , phone)
-        st.write("المؤهل:" , degree)
-        st.write("سنوات الخبرة:" ,exp)
-        st.write("المهارات:" , skills)
 
     
 
-    
 
 
 
