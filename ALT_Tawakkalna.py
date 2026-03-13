@@ -72,19 +72,20 @@ if st.button("تسجيل"):
         st.balloons() 
         
         st.markdown("---")
-        st.subheader("البيانات المسجلة:")
+        st.subheader(":البيانات المسجلة")
         col1, col2 = st.columns(2)
         with col1:
-            st.write(f"**الاسم:** {name}")
-            st.write(f"**رقم الهوية:** {id}")
-            st.write(f"**رقم الجوال:** {phone}")
+            st.write(f"**:الاسم** {name}")
+            st.write(f"**:رقم الهوية** {id}")
+            st.write(f"**:رقم الجوال** {phone}")
         with col2:
-            st.write(f"**المؤهل:** {degree}")
-            st.write(f"**الخبرة:** {exp} سنوات")
-            st.write(f"**المهارات:** {', '.join(skills)}")
+            st.write(f"** "" :المؤهل** {degree}")
+            st.write(f"**:الخبرة** {exp} سنوات")
+            st.write(f"**:المهارات** {', '.join(skills)}")
     
 
     
+
 
 
 
