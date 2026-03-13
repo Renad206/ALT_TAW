@@ -70,21 +70,22 @@ if st.button("تسجيل"):
     else:
         st.success("تم التسجيل بنجاح")
         st.balloons() 
-      st.markdown("---")
-st.subheader("البيانات المسجلة:")
-
-col1, col2 = st.columns(2)
-
-with col2: # العمود اليمين
-    st.write(f"{name} **:الاسم**")
-    st.write(f"{id} **:رقم الهوية**")
-    st.write(f"{phone} **:رقم الجوال**")
-
-with col1: # العمود اليسار
-    st.write(f"{degree} **:المؤهل**")
-    st.write(f"{exp} **:الخبرة**")
-    st.write(f"{', '.join(skills)} **:المهارات**")
+        st.markdown("---")
+        st.subheader("البيانات المسجلة:")
     
+        col1, col2 = st.columns(2)
+        
+        with col2: # العمود اليمين
+            st.write(f"{name} **:الاسم**")
+            st.write(f"{id} **:رقم الهوية**")
+            st.write(f"{phone} **:رقم الجوال**")
+        
+        with col1: # العمود اليسار
+            st.write(f"{degree} **:المؤهل**")
+            st.write(f"{exp} **:الخبرة**")
+            st.write(f"{', '.join(skills)} **:المهارات**")
+        
+
 
 
 
