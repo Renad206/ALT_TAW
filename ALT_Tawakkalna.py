@@ -3,6 +3,8 @@ import datetime
 import sqlite3
 import pandas as pd
 import io
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 # الداتابيس   
 DB_NAME = "mart.db"
@@ -126,5 +128,28 @@ with st.sidebar:
 
 
 
+app = FastAPI()
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # لاحقًا ضع رابط موقعك الأول
+    allow_methods=["*"],
+    allow_headers=["*"]
+)
+
+DB_NAME = "mart.db"
+
+@app.get("/get-user/{national_id}")
+def get_user(national_id: str):
+    with sqlite3.connect(DB_NAME) as con:
+        cur = con.cursor()
+        cur.execute("""
+            SELECT full_name, national_id, birth_date, phone, email, university, degree, experience_years, skills, language 
+            FROM profile WHERE national_id=?
+        """, (national_id,))
+        row = cur.fetchone()
+        if row:
+            keys = ["full_name","national_id","birth_date","phone","email","university","degree","experience_years","skills","language"]
+            return {"success": True, "data": dict(zip(keys,row))}
+        return {"success": False, "message": "لم يتم العثور على بيانات المستخدم"}
 
